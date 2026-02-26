@@ -1,5 +1,6 @@
 import { useCallback, useEffect, useMemo, useState } from 'react';
 import type { ChangeEvent, ReactElement } from 'react';
+import SplashScreen from './components/SplashScreen';
 import { Canvas } from '@react-three/fiber';
 import type { GitHistoryExport, PreparedCommit } from './types/git';
 import { CommitTooltip } from './components/CommitTooltip';
@@ -225,6 +226,7 @@ export default function App(): ReactElement {
   const visibleCommit = visibleCount ? prepared.commits[visibleCount - 1] : null;
 
   return (
+    <SplashScreen>
     <div className="app-shell">
       <header className="hud-panel">
         <div className="title-wrap">
@@ -328,5 +330,6 @@ export default function App(): ReactElement {
         {loading ? <div className="loading-overlay">Rendering commit galaxy...</div> : null}
       </main>
     </div>
+    </SplashScreen>
   );
 }
